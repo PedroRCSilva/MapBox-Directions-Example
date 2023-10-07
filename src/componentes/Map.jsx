@@ -34,11 +34,12 @@ const Map = () => {
 
   // Estado para armazenar as coordenadas de origem
   const [originCoordinates, setOriginCoordinates] = useState(
-    gerarCoordenadaAleatoria()
+    //latitude e longitude do centro de são paulo
+    { lat: -23.5505199, lon: -46.6333094}
   );
 
   // Estado para armazenar as coordenadas de destino
-  const [destination, setDestination] = useState(gerarCoordenadaAleatoria());
+  const [destination, setDestination] = useState();
 
   // Estado para armazenar as coordenadas da rota
   const [routerCoordinates, setRouterCoordinates] = useState([]);
@@ -138,7 +139,11 @@ const Map = () => {
         maker.addTo(map);
       });
 
-      // Adicionar marcador de destino
+
+   
+
+      
+      // Adicionar marcador de origem
       map.addLayer({
         id: "origin",
         type: "circle",
@@ -157,14 +162,15 @@ const Map = () => {
           "circle-color": "#3887be",
         },
       });
+    
     });
+    
   }, [mapStyle, routerCoordinates]);
 
   return (
     <div>
       <div ref={mapContainerRef} className="w-screen h-screen"></div>
-     
-    </div>
+         </div>
   );
 };
 
